@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="US-ASCII" ?>
+<adfc-mobile-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.0">
+  <task-flow-definition id="range-task-flow">
+    <default-activity>region-list</default-activity>
+    <managed-bean id="__1">
+      <managed-bean-name>RangeBean</managed-bean-name>
+      <managed-bean-class>com.oracle.demo.beacon.monitor.mobile.RangeBean</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__2">
+      <managed-bean-name>RegionListBean</managed-bean-name>
+      <managed-bean-class>com.oracle.demo.beacon.monitor.mobile.RegionListBean</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__7">
+      <managed-bean-name>SelectedBeaconBean</managed-bean-name>
+      <managed-bean-class>com.oracle.demo.beacon.monitor.mobile.BeaconBean</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="all-in-range">
+      <page>/all-in-range.amx</page>
+    </view>
+    <view id="region-list">
+      <page>/region-list.amx</page>
+    </view>
+    <view id="beacon-details">
+      <page>/beacon-details.amx</page>
+    </view>
+    <method-call id="start-ranging">
+      <method>#{pageFlowScope.RangeBean.startRanging}</method>
+      <outcome>
+        <fixed-outcome>gotoRangeList</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="stop-ranging">
+      <method>#{pageFlowScope.RangeBean.stopRanging}</method>
+      <outcome>
+        <fixed-outcome>backToRegions</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="reset-selected-beacon">
+      <method>#{pageFlowScope.SelectedBeaconBean.reset}</method>
+      <outcome>
+        <fixed-outcome>backToBeacons</fixed-outcome>
+      </outcome>
+    </method-call>
+    <view id="position-chart">
+      <page>/position-chart.amx</page>
+    </view>
+    <view id="history-chart">
+      <page>/history-chart.amx</page>
+    </view>
+    <control-flow-rule id="__3">
+      <from-activity-id>region-list</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome>beaconsInRegion</from-outcome>
+        <to-activity-id>start-ranging</to-activity-id>
+        <transition>slideStart</transition>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__5">
+      <from-activity-id>all-in-range</from-activity-id>
+      <control-flow-case id="__6">
+        <from-outcome>beaconDetails</from-outcome>
+        <to-activity-id>beacon-details</to-activity-id>
+        <transition>flipUp</transition>
+      </control-flow-case>
+      <control-flow-case id="__15">
+        <from-outcome>stopRanging</from-outcome>
+        <to-activity-id>stop-ranging</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__10">
+        <from-outcome>showChart</from-outcome>
+        <to-activity-id>position-chart</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__20">
+        <from-outcome>showHistory</from-outcome>
+        <to-activity-id>history-chart</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__8">
+      <from-activity-id>start-ranging</from-activity-id>
+      <control-flow-case id="__9">
+        <from-outcome>gotoRangeList</from-outcome>
+        <to-activity-id>all-in-range</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__13">
+      <from-activity-id>stop-ranging</from-activity-id>
+      <control-flow-case id="__14">
+        <from-outcome>backToRegions</from-outcome>
+        <to-activity-id>region-list</to-activity-id>
+        <transition>slideEnd</transition>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__16">
+      <from-activity-id>reset-selected-beacon</from-activity-id>
+      <control-flow-case id="__17">
+        <from-outcome>backToBeacons</from-outcome>
+        <to-activity-id>all-in-range</to-activity-id>
+        <transition>flipDown</transition>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__18">
+      <from-activity-id>beacon-details</from-activity-id>
+      <control-flow-case id="__19">
+        <from-outcome>resetSelected</from-outcome>
+        <to-activity-id>reset-selected-beacon</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__11">
+      <from-activity-id>position-chart</from-activity-id>
+      <control-flow-case id="__12">
+        <from-outcome>backToBeacons</from-outcome>
+        <to-activity-id>all-in-range</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__21">
+      <from-activity-id>history-chart</from-activity-id>
+      <control-flow-case id="__22">
+        <from-outcome>backToBeacons</from-outcome>
+        <to-activity-id>all-in-range</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+  </task-flow-definition>
+</adfc-mobile-config>

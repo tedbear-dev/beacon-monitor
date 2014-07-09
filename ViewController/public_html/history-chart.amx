@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+  <amx:panelPage id="pp1">
+    <amx:facet name="header">
+      <amx:outputText value="History" id="ot1"/>
+    </amx:facet>
+    <amx:facet name="primary">
+      <amx:commandButton id="cb1" text="Back" action="backToBeacons"/>
+    </amx:facet>
+    <amx:facet name="secondary">
+      <amx:commandButton actionListener="#{bindings.resetPositionHistory.execute}" text="Reset"
+                         disabled="#{!bindings.resetPositionHistory.enabled}" id="cb2"/>
+    </amx:facet>
+    <dvtm:scatterChart id="graph1" var="row" value="#{bindings.positionHistory.collectionModel}">
+      <amx:facet name="dataStamp">
+        <dvtm:chartDataItem id="cdi1" color="#{row.color}" markerSize="#{row.markerSize}" x="#{row.x}" y="#{row.y}"/>
+      </amx:facet>
+      <dvtm:legend rendered="false" id="l1"/>
+    </dvtm:scatterChart>
+  </amx:panelPage>
+</amx:view>

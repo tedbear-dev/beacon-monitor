@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfmf:application xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:adfmf="http://xmlns.oracle.com/adf/mf"
+                   version="1.0" name="Beacon Monitor" id="com.company.BeaconMonitor"
+                   appControllerFolder="ApplicationController"
+                   listener-class="com.oracle.demo.beacon.monitor.application.LifeCycleListenerImpl">
+  <adfmf:featureReference id="com.oracle.demo.beacon.monitor.range"/>
+  <adfmf:featureReference id="com.oracle.demo.beacon.monitor.recorder"/>
+  <adfmf:navigation>
+    <adfmf:springboard enabled="true"/>
+    <adfmf:navigationBar displayHideShowNavigationBarControl="true"/>
+  </adfmf:navigation>
+  <adfmf:cordovaPlugins>
+    <adfmf:plugin fullyQualifiedName="BeaconPlugin" implementationClass="BeaconPlugin" name="BeaconPlugin"
+                  platform="iOS">
+      <adfmf:iosPluginInfo>
+        <adfmf:linkerFlags>-l BeaconPlugin</adfmf:linkerFlags>
+      </adfmf:iosPluginInfo>
+    </adfmf:plugin>
+  </adfmf:cordovaPlugins>
+</adfmf:application>

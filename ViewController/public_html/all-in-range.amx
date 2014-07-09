@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+  <amx:panelPage id="pp1">
+    <amx:facet name="header">
+      <amx:outputText value="Range" id="ot1"/>
+    </amx:facet>
+    <amx:facet name="primary">
+      <amx:commandButton id="cb1" text="Back" action="stopRanging"/>
+    </amx:facet>
+    <amx:outputText value="Region: #{pageFlowScope.RangeBean.currentRegion.name}" id="ot2"/>
+    <amx:commandButton id="cb2" text="Position" action="showChart"/>
+    <amx:commandButton id="cb3" text="History" action="showHistory"/>
+    <amx:listView styleClass="adfmf-listView-insetList" var="row" showMoreStrategy="autoScroll"
+                  bufferStrategy="viewport" value="#{pageFlowScope.RangeBean.beaconList}" id="lv2">
+      <amx:listItem id="li2" action="beaconDetails">
+        <amx:tableLayout width="100%" id="tl2">
+          <amx:rowLayout id="rl3">
+            <amx:cellFormat width="10px" rowSpan="2" id="cf5"/>
+            <amx:cellFormat width="60%" height="28px" id="cf3">
+              <amx:outputText value="#{row.major}.#{row.minor}" id="ot6"/>
+            </amx:cellFormat>
+            <amx:cellFormat width="10px" rowSpan="2" id="cf6"/>
+            <amx:cellFormat width="40%" halign="end" id="cf7">
+              <amx:outputText value="" styleClass="adfmf-listItem-highlightText" id="ot7"/>
+            </amx:cellFormat>
+          </amx:rowLayout>
+          <amx:rowLayout id="rl4">
+            <amx:cellFormat width="60%" height="12px" id="cf9">
+              <amx:outputText value="Proximity: #{row.proximity}" styleClass="adfmf-listItem-captionText" id="ot9"/>
+            </amx:cellFormat>
+            <amx:cellFormat width="40%" halign="end" id="cf8">
+              <amx:outputText value="RSSI: #{row.rssi}" styleClass="adfmf-listItem-captionText" id="ot8"/>
+            </amx:cellFormat>
+          </amx:rowLayout>
+        </amx:tableLayout>
+        <amx:setPropertyListener id="spl1" from="#{row.major}" to="#{pageFlowScope.SelectedBeaconBean.major}"/>
+        <amx:setPropertyListener id="spl2" from="#{row.minor}" to="#{pageFlowScope.SelectedBeaconBean.minor}"/>
+        <amx:setPropertyListener id="spl3" from="#{row.proximityUUID}" to="#{pageFlowScope.SelectedBeaconBean.proximityUUID}"/>
+      </amx:listItem>
+    </amx:listView>
+  </amx:panelPage>
+</amx:view>

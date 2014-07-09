@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<DataControlConfigs xmlns="http://xmlns.oracle.com/adfm/configuration" version="12.1.3.9.1" id="DataControls"
+                    Package="com.oracle.demo.beacon.monitor.mobile">
+  <AdapterDataControl id="PositionList" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="com.oracle.demo.beacon.monitor.data.PositionList"
+                      BeanClass="com.oracle.demo.beacon.monitor.data.PositionList"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <bean-definition BeanClass="com.oracle.demo.beacon.monitor.data.PositionList"
+                       DataControlHandler="oracle.adf.model.adapter.bean.BeanDCHandler" EagerPersist="false"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+</DataControlConfigs>

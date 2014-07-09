@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.1.3.16.21" id="DataBindings"
+             SeparateXMLFiles="false" Package="com.oracle.demo.beacon.monitor.mobile" ClientType="Generic">
+  <pageMap>
+    <page path="/com.oracle.demo.beacon.monitor.recorder/recorder.amx"
+          usageId="com_oracle_demo_beacon_monitor_mobile_recorderPageDef"/>
+    <page path="/region-list.amx" usageId="com_oracle_demo_beacon_monitor_mobile_region_listPageDef"/>
+    <page path="/position-chart.amx" usageId="com_oracle_demo_beacon_monitor_mobile_position_chartPageDef"/>
+    <page path="/history-chart.amx" usageId="com_oracle_demo_beacon_monitor_mobile_history_chartPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="com_oracle_demo_beacon_monitor_mobile_recorderPageDef"
+          path="com.oracle.demo.beacon.monitor.recorder.recorderPageDef"/>
+    <page id="com_oracle_demo_beacon_monitor_mobile_region_listPageDef"
+          path="com.oracle.demo.beacon.monitor.mobile.pageDefs.region_listPageDef"/>
+    <page id="com_oracle_demo_beacon_monitor_mobile_position_chartPageDef"
+          path="com.oracle.demo.beacon.monitor.mobile.pageDefs.position_chartPageDef"/>
+    <page id="com_oracle_demo_beacon_monitor_mobile_history_chartPageDef"
+          path="com.oracle.demo.beacon.monitor.mobile.pageDefs.history_chartPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <dc id="PositionList" path="com.oracle.demo.beacon.monitor.mobile.PositionList"/>
+    <dc id="ApplicationFeatures" path="com.oracle.demo.beacon.monitor.application.ApplicationFeatures"/>
+  </dataControlUsages>
+</Application>

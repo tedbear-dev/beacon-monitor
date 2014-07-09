@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.9.1" id="history_chartPageDef"
+                Package="com.oracle.demo.beacon.monitor.mobile.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="1000" DataControl="PositionList" id="PositionListIterator" Refresh="always"/>
+    <accessorIterator MasterBinding="PositionListIterator" Binds="positionHistory" RangeSize="1000"
+                      DataControl="PositionList" BeanClass="com.oracle.demo.beacon.monitor.data.Position"
+                      id="positionHistoryIterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="resetPositionHistory" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="resetPositionHistory" IsViewObjectMethod="false" DataControl="PositionList"
+                  InstanceName="data.PositionList.dataProvider"/>
+    <tree IterBinding="positionHistoryIterator" id="positionHistory">
+      <nodeDefinition DefName="com.oracle.demo.beacon.monitor.data.Position" Name="positionHistory0">
+        <AttrNames>
+          <Item Value="distance"/>
+          <Item Value="uuid"/>
+          <Item Value="major"/>
+          <Item Value="minor"/>
+          <Item Value="x"/>
+          <Item Value="y"/>
+          <Item Value="z"/>
+          <Item Value="markerSize"/>
+          <Item Value="borderColor"/>
+          <Item Value="color"/>
+          <Item Value="tooltip"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="updatePosition" RequiresUpdateModel="true" Action="invokeMethod" MethodName="updatePosition"
+                  IsViewObjectMethod="false" DataControl="PositionList" InstanceName="data.PositionList.dataProvider"/>
+  </bindings>
+</pageDefinition>

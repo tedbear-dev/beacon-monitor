@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<amx:view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amx="http://xmlns.oracle.com/adf/mf/amx"
+          xmlns:dvtm="http://xmlns.oracle.com/adf/mf/amx/dvt">
+  <amx:panelPage id="pp1">
+    <amx:facet name="header">
+      <amx:outputText value="Details" id="ot1"/>
+    </amx:facet>
+    <amx:facet name="primary">
+      <amx:commandButton id="cb1" action="resetSelected" text="Back"/>
+    </amx:facet>
+    <amx:panelFormLayout id="pfl1">
+      <amx:panelLabelAndMessage label="Region" id="plam0">
+        <amx:outputText value="#{pageFlowScope.SelectedBeaconBean.regionID}" id="ot0"/>
+      </amx:panelLabelAndMessage>
+      <amx:panelLabelAndMessage label="UUID" id="plam1">
+        <amx:outputText value="#{pageFlowScope.SelectedBeaconBean.proximityUUID}" id="ot2"/>
+      </amx:panelLabelAndMessage>
+      <amx:panelLabelAndMessage label="Major" id="plam2">
+        <amx:outputText value="#{pageFlowScope.SelectedBeaconBean.major}" id="ot3"/>
+      </amx:panelLabelAndMessage>
+      <amx:panelLabelAndMessage label="Minor" id="plam3">
+        <amx:outputText value="#{pageFlowScope.SelectedBeaconBean.minor}" id="ot4"/>
+      </amx:panelLabelAndMessage>
+      <amx:panelLabelAndMessage label="RSSI" id="plam4">
+        <amx:outputText value="#{pageFlowScope.SelectedBeaconBean.rssi}" id="ot5"/>
+      </amx:panelLabelAndMessage>
+      <amx:panelLabelAndMessage label="Accuracy" id="plam5">
+        <amx:outputText value="#{pageFlowScope.SelectedBeaconBean.accuracy}" id="ot6"/>
+      </amx:panelLabelAndMessage>
+      <amx:panelLabelAndMessage label="Proximity" id="plam6">
+        <amx:outputText value="#{pageFlowScope.SelectedBeaconBean.proximity}" id="ot7"/>
+      </amx:panelLabelAndMessage>
+    </amx:panelFormLayout>
+  </amx:panelPage>
+</amx:view>

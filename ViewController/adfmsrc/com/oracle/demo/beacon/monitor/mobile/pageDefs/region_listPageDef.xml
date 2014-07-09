@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.16.21" id="region_listPageDef"
+                Package="com.oracle.demo.beacon.monitor.mobile.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables">
+      <variable Type="java.lang.String" Name="setBeaconPositions_uuid" IsQueriable="false"/>
+    </variableIterator>
+  </executables>
+  <bindings>
+    <methodAction id="gotoSpringboard" RequiresUpdateModel="true" Action="invokeMethod" MethodName="gotoSpringboard"
+                  IsViewObjectMethod="false" DataControl="ApplicationFeatures"
+                  InstanceName="data.ApplicationFeatures.dataProvider"/>
+    <methodAction id="setBeaconPositions" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="setBeaconPositions" IsViewObjectMethod="false" DataControl="PositionList"
+                  InstanceName="data.PositionList.dataProvider">
+      <NamedData NDName="uuid" NDValue="#{pageFlowScope.RangeBean.currentRegion.uuid}" NDType="java.lang.String"/>
+    </methodAction>
+    <attributeValues IterBinding="variables" id="uuid">
+      <AttrNames>
+        <Item Value="setBeaconPositions_uuid"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

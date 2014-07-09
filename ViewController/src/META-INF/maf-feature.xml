@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfmf:features xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:adfmf="http://xmlns.oracle.com/adf/mf">
+  <adfmf:feature id="com.oracle.demo.beacon.monitor.range" name="Beacon Ranger"
+                 icon="com.oracle.demo.beacon.monitor.range/lighthouse.png"
+                 image="com.oracle.demo.beacon.monitor.range/beacon-feature-icon-small@2x.png">
+    <adfmf:content id="com.oracle.demo.beacon.monitor.range.1"
+                   icon="com.oracle.demo.beacon.monitor.range/lighthouse.png"
+                   image="com.oracle.demo.beacon.monitor.range/beacon-feature-icon-small@2x.png">
+      <adfmf:amx file="com.oracle.demo.beacon.monitor.range/range-task-flow.xml#range-task-flow">
+        <adfmf:includes>
+          <adfmf:include type="JavaScript" file="plugins/BeaconPlugin/iOS/js/BeaconPlugin.js" id="i1"/>
+        </adfmf:includes>
+      </adfmf:amx>
+    </adfmf:content>
+  </adfmf:feature>
+  <adfmf:feature id="com.oracle.demo.beacon.monitor.recorder" name="Activity Recorder"
+                 icon="com.oracle.demo.beacon.monitor.recorder/video-camera.png"
+                 image="com.oracle.demo.beacon.monitor.recorder/camera-icon-large.png">
+    <adfmf:content id="com.oracle.demo.beacon.monitor.recorder.1"
+                   icon="com.oracle.demo.beacon.monitor.recorder/video-camera.png"
+                   image="com.oracle.demo.beacon.monitor.recorder/camera-icon-large.png">
+      <adfmf:amx file="com.oracle.demo.beacon.monitor.recorder/recorder.amx"/>
+    </adfmf:content>
+  </adfmf:feature>
+</adfmf:features>
